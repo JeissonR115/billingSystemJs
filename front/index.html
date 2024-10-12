@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Crear Factura</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Crear Factura</h2>
+
+        <!-- Información de la Empresa -->
+        <div class="company-info">
+            <table>
+                <tr>
+                    <th>NIT</th>
+                    <th>Empresa</th>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                </tr>
+                <tr>
+                    <td>809891658</td>
+                    <td>Super Locos</td>
+                    <td>Kevin Ramirez</td>
+                    <td>3222291007</td>
+                    <td>alejo1025@gmail.com</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Formulario para los Artículos -->
+        <form id="invoice-form">
+            <div class="items-table">
+                <table id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Sub Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se agregarán dinámicamente las filas -->
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" id="addRowBtn">Agregar Artículo</button>
+
+            <div class="total-section">
+                <p>Total a Pagar: <span id="totalAmount">0.00</span></p>
+            </div>
+
+            <button type="submit">Crear Factura</button>
+            <button><a href="/consultar.html">Consultar Facturas</a></button>
+        </form>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="script2.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Crear Factura</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Crear Factura</h2>
+        <form id="invoice-form">
+            <label for="items">Artículos
+                <table>
+                    <tr>
+                        <td>NIT</td>
+                        <td>EMPRESA</td>
+                        <td>CLIENTE</td>
+                        <td>TELEFONO</td>
+                        <td>CORREO</td>
+                    </tr>
+                    <tr>
+                        <td>809891658</td>
+                        <td>Super Locos</td>
+                        <td>Kevin Ramirez</td>
+                        <td>3222291007</td>
+                        <td>alejo1025@gmail.com</td>
+                    </tr>
+                </table>
+            </label>
+
+            <label for="items">Artículos
+                <table>
+                    <tr>
+                        <td>ID</td>
+                        <td>Producto</td>
+                        <td>Cantidad</td>
+                        <td>Precio</td>
+                        <td>Sub Total</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>carne</td>
+                        <td>5</td>
+                        <td>10.000</td>
+                        <td>50.000</td>
+                    </tr>
+                </table>
+            </label>
+            <button type="submit">Crear Factura</button>
+        </form>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles2.css">
+    <title>Consultar Facturas</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Consultar Facturas</h2>
+        <button id="loadInvoicesBtn">Cargar Facturas</button>
+
+        <table id="invoicesTable">
+            <thead>
+                <tr>
+                    <th>ID Factura</th>
+                    <th>Cliente</th>
+                    <th>Empresa</th>
+                    <th>Total</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregarán dinámicamente las filas de las facturas -->
+            </tbody>
+        </table>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="consulta.js"></script>
+</body>
+</html>
