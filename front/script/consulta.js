@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para cargar las facturas desde el backend
     function loadInvoices() {
-        fetch('https://api.example.com/invoices')  // Cambia esta URL por tu API real
+        fetch('http://localhost:3000/v1/Invoice')  // Cambia esta URL por tu API real
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al cargar las facturas');
