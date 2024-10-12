@@ -6,8 +6,8 @@ import invoiceDetailsRoutes from "./invoiceDetailRoute.js";
 
 const router = express.Router();
 
+router.use("/invoice_details", invoiceDetailsRoutes);
 router.use("/invoice", invoiceRoutes);
-router.use("/invoice_detail", invoiceDetailsRoutes);
 
 
 export default router;
