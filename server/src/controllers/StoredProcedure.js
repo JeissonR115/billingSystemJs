@@ -1,17 +1,13 @@
 import { db } from "../../app.js";
 
-export const callStoredProcedure = async (_req, res, procedure, action, ...params) => {
+export const callStoredProcedure = async (req, res, procedure, params) => {
   try {
-    const [rows] = await db.query(
-      `CALL ${procedure}(?, ${params.map(() => "?").join(", ")})`,
-      [action, ...params]
-    );
-
-    if (action === "Read" || action === "ReadAll") {
-      res.status(200).json(rows);
-    } else {
-      res.status(200).json({ message: rows[0][0].message });
-    }
+    const placeholders = params.map(() => "?").join(", ");
+    const sql = `CALL ${procedure}(${placeholders})`;
+ console.log(params)
+    const [results] = await db.query(sql, params);
+   ;
+    res.status(200).json(results);
   } catch (error) {
     console.error(error);
     res
