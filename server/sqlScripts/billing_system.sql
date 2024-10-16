@@ -11,7 +11,7 @@ CREATE TABLE Customers (
     address VARCHAR(255),
     phone VARCHAR(50),
     email VARCHAR(255),
-    tax_id VARCHAR(50) -- Tax Identification Number
+    tax_id VARCHAR(50) 
 );
 
 -- Create the Products table
@@ -23,12 +23,11 @@ CREATE TABLE Products (
     quantity_available INT NOT NULL
 );
 
--- Create the Invoices table
+-- Create the Invoices table (no 'total' column)
 CREATE TABLE Invoices (
     invoice_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
     issue_date DATE NOT NULL,
-    total DECIMAL(10, 2) NOT NULL,
     status ENUM('paid', 'pending', 'canceled') NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );

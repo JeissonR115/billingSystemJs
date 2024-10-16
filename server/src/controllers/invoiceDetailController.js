@@ -1,70 +1,52 @@
-// src/controllers/invoiceDetailsController.js
-import { db } from "../../app.js";
+import { callStoredProcedure } from "./StoredProcedure.js";
 
 class InvoiceDetails {
-  static manage = async (req, res, action) => {
-    const {
-      detail_id,
-      invoice_id,
-      product_id,
-      quantity,
-      unit_price,
-      subtotal,
-    } = req.body;
-
-    try {
-      const [rows] = await db.query(
-        "CALL manage_invoice_details(?, ?, ?, ?, ?, ?)",
-        [
-          action,
-          detail_id,
-          invoice_id,
-          product_id,
-          quantity,
-          unit_price,
-          subtotal,
-        ]
-      );
-      res
-        .status(200)
-        .json(action === "Read" ? rows : { message: rows[0][0].message });
-    } catch (error) {
-      console.error(error);
-      res
-        .status(500)
-        .json({ message: "An error occurred while processing your request." });
-    }
+  static create = async (req, res) => {
+    await callStoredProcedure(req, res, "manage_invoice_details", [
+      "Create",
+      null, 
+      req.body.invoice_id,
+      req.body.product_id,
+      req.body.quantity,
+      req.body.unit_price,
+    ]);
   };
 
-  static create = async (req, res) =>
-    await InvoiceDetails.manage(req, res, "Create");
 
   static read = async (req, res) => {
-    req.body.detail_id = req.params.detail_id;
-    await InvoiceDetails.manage(req, res, "Read");
+    await callStoredProcedure(req, res, "manage_invoice_details", [
+      "Read",
+      null,
+      req.params.invoice_id,
+      null,
+      null,
+      null,
+    ]);
+    
   };
 
-  static update = async (req, res) =>
-    await InvoiceDetails.manage(req, res, "Update");
+  static update = async (req, res) => {
+    await callStoredProcedure(req, res, "manage_invoice_details", [
+      "Update",
+      req.body.detail_id,
+      req.body.invoice_id,
+      req.body.product_id,
+      req.body.quantity,
+      req.body.unit_price,
+    ]);
+  };
 
   static delete = async (req, res) => {
-    req.body.detail_id = req.params.detail_id;
-    await InvoiceDetails.manage(req, res, "Delete");
+    await callStoredProcedure(req, res, "manage_invoice_details", [
+      "Delete",
+      req.params.detail_id,
+      null,
+      null,
+      null,
+      null,
+    ]);
   };
 
-  static readAll = async (req, res) => {
-    try {
-      const rows = await db.query("SELECT * FROM Invoice_Details");
-      res.status(200).json(rows);
-    } catch (error) {
-      console.error("Error retrieving invoice details:", error);
-      res
-        .status(500)
-        .json({
-          message: "An error occurred while retrieving invoice details.",
-        });
-    }
-  };
 }
 
 export default InvoiceDetails;
