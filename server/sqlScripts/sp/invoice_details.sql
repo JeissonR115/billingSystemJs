@@ -32,8 +32,11 @@ BEGIN
                 quantity = quantity_param,
                 unit_price = unit_price_param,
                 subtotal = subtotal
-            WHERE detail_id = detail_id_param;
-            SET msg = 'Invoice detail updated successfully.';
+WHERE
+    detail_id = detail_id_param;
+
+SET
+    msg = 'Invoice detail updated successfully.';
 
         WHEN 'Delete' THEN
             DELETE FROM Invoice_Details WHERE detail_id = detail_id_param;

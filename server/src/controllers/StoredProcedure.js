@@ -4,9 +4,7 @@ export const callStoredProcedure = async (req, res, procedure, params) => {
   try {
     const placeholders = params.map(() => "?").join(", ");
     const sql = `CALL ${procedure}(${placeholders})`;
- console.log(params)
     const [results] = await db.query(sql, params);
-   ;
     res.status(200).json(results);
   } catch (error) {
     console.error(error);
