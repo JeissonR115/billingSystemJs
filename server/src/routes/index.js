@@ -8,7 +8,7 @@ import productsRoutes from "./productRoutes.js";
 
 const router = express.Router();
 
-router.use("/invoice_details", invoiceDetailsRoutes);
+router.use("/invoice/details", invoiceDetailsRoutes);
 router.use("/invoice", invoiceRoutes);
-
+router.use("/product", productsRoutes)
 export default router;
