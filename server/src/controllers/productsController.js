@@ -1,9 +1,9 @@
-import { callStoredProcedure } from "./StoredProcedure.js";
+import { callSPController } from "./spController.js";
 
 class Products {
 
   static create = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_products", [
+    await callSPController(req, res, "manage_products", [
       "Create",
       req.body.product_name,
       req.body.description,
@@ -13,7 +13,7 @@ class Products {
   };
 
   static read = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_products", [
+    await callSPController(req, res, "manage_products", [
       "Read",
       req.params.product_id,
       null,
@@ -24,7 +24,7 @@ class Products {
   };
 
   static update = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_products", [
+    await callSPController(req, res, "manage_products", [
       "Update",
       req.body.product_id,
       req.body.product_name,
@@ -35,7 +35,7 @@ class Products {
   };
 
   static delete = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_products", [
+    await callSPController(req, res, "manage_products", [
       "Delete",
       req.params.product_id,
       null,
@@ -46,7 +46,7 @@ class Products {
   };
 
   static readAll = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_products", [
+    await callSPController(req, res, "manage_products", [
       "ReadAll",
       null,
       null,

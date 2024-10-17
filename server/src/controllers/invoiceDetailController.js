@@ -1,10 +1,10 @@
-import { callStoredProcedure } from "./StoredProcedure.js";
+import { callSPController } from "./spController.js";
 
 class InvoiceDetails {
   static create = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_invoice_details", [
+    await callSPController(req, res, "manage_invoice_details", [
       "Create",
-      null, 
+      null,
       req.body.invoice_id,
       req.body.product_id,
       req.body.quantity,
@@ -14,7 +14,7 @@ class InvoiceDetails {
 
 
   static read = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_invoice_details", [
+    await callSPController(req, res, "manage_invoice_details", [
       "Read",
       null,
       req.params.invoice_id,
@@ -22,11 +22,11 @@ class InvoiceDetails {
       null,
       null,
     ]);
-    
+
   };
 
   static update = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_invoice_details", [
+    await callSPController(req, res, "manage_invoice_details", [
       "Update",
       req.body.detail_id,
       req.body.invoice_id,
@@ -37,7 +37,7 @@ class InvoiceDetails {
   };
 
   static delete = async (req, res) => {
-    await callStoredProcedure(req, res, "manage_invoice_details", [
+    await callSPController(req, res, "manage_invoice_details", [
       "Delete",
       req.params.detail_id,
       null,
