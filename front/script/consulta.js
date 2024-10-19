@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para cargar las facturas desde el backend
     function loadInvoices() {
-        fetch('http://localhost:3000/v1/Invoice')  // Cambia esta URL por tu API real
+        fetch('http://localhost:3000/v1/Invoice/')  // Cambia esta URL por tu API real
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al cargar las facturas');
@@ -22,17 +22,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Recorrer los datos de las facturas y agregarlas a la tabla
-                data.forEach(invoice => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${invoice.invoiceId}</td>
-                        <td>${invoice.clientName}</td>
-                        <td>${invoice.companyName}</td>
-                        <td>${invoice.totalAmount}</td>
-                        <td>${invoice.date}</td>
-                    `;
-                    invoicesTableBody.appendChild(row);
-                });
+            data.forEach(async (invoice,i) => {
+    try {
+        // Espera la respuesta del fetch
+    //    // const response = await fetch('http://localhost:3000/v1/invoice/details/' + 1 );
+    //     const detalles = await response.json(); // Suponiendo que el API responde con JSON
+    //     console.log(detalles);
+            // <td>${detalles[i].product_id}</td>
+            //  <td>${detalles[i].quantity}</td>
+            //  <td>${detalles[i].unit_price}</td>
+            
+        // Crea la fila para la tabla
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${invoice.invoice_id}</td>
+            <td>${invoice.customer_id}</td>
+            <td>${invoice.issue_date}</td>
+            
+        `;
+
+        invoicesTableBody.appendChild(row);
+    } catch (error) {
+        console.error('Error fetching invoice details:', error);
+    }
+});
+
 
                 message.textContent = ''; // Limpiar cualquier mensaje de error
             })
